@@ -13,7 +13,7 @@
 	<groupId>us.flexion</groupId>
 	<artifactId>convert-units-jolson490</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>convert-units</name>
+	<name>Convert Units - Flexion coding challenge submission by Joshua Olson</name>
 	<description>Checks provided answers for converted values for temperature or volume</description>
 
 	<licenses>
