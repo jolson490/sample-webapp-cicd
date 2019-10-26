@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="5"> <!-- https://logging.apache.org/log4j/2.x/manual/configuration.html -->
+    <Properties>
+        <!-- See the conversion specifiers on https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html -->
+        <Property name="LOG_PATTERN">%style{%d{HH:mm:ss.SSS}}{black} %-5level %highlight{%level}{FATAL=bg_red,ERROR=red,WARN=yellow,INFO=green,DEBUG=blue} [%t] %C{1.}:%L - %msg%n</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}" />
+        </Console>
+
+        <RollingFile name="RollingFile" fileName="./logs/spring-boot-logger-log4j2.log"
+            filePattern="./logs/$${date:yyyy-MM}/spring-boot-logger-log4j2-%d{-dd-MMMM-yyyy}-%i.log.gz">
+            <PatternLayout pattern="${LOG_PATTERN}" />
+            <Policies>
+                <OnStartupTriggeringPolicy />
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="10 MB" />
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="RollingFile" />
+        </Root>
+
+        <Logger name="us.flexion.convertunits" level="DEBUG"> </Logger>
+
+        <!-- Leaving the following line here as a placeholder for if/when Spring needs to be debugged. -->
+        <!-- <Logger name="org.springframework" level="DEBUG"> </Logger> -->
+    </Loggers>
+</Configuration>
