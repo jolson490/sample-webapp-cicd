@@ -17,6 +17,11 @@
   <version>0.0.1-SNAPSHOT</version> <!-- TO-DO -->
   <name>Convert Units - Flexion coding challenge submission by Joshua Olson</name>
   <description>Checks provided answers for converted values for temperature or volume</description>
+  <organization>
+    <name>Flexion Inc.</name>
+    <url>https://www.flexion.us/</url>
+  </organization>
+
   <packaging>jar</packaging>
   <!-- TO-DO: <url>http://<aws>/convertunits/</url> -->
 
