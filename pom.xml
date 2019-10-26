@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
+	<parent> <!-- https://github.com/spring-projects/spring-boot/blob/v2.2.0.RELEASE/spring-boot-project/spring-boot-starters/spring-boot-starter-parent/pom.xml -->
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.2.0.RELEASE</version>
@@ -12,10 +12,13 @@
 
 	<groupId>us.flexion</groupId>
 	<artifactId>convert-units-jolson490</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version> <!-- TO-DO -->
 	<name>Convert Units - Flexion coding challenge submission by Joshua Olson</name>
 	<description>Checks provided answers for converted values for temperature or volume</description>
 	<packaging>jar</packaging>
+	<!-- TO-DO: <url>http://<aws>/convertunits/</url> -->
+
+    <!-- TODO: indent 2 spaces all code files in this git repo. -->
 
 	<licenses>
 		<license>
@@ -25,20 +28,27 @@
 	</licenses>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>11</java.version> <!-- The newest Java version that has LTS. -->
 	</properties>
 
+	<!--
+	  For a production app we want to pin down specific versions of dependencies, but in this file we don't need to specify
+	  the '<version>' of each '<dependency>' from 'org.springframework.boot', because that's already done for us
+	  in https://github.com/spring-projects/spring-boot/blob/v2.2.0.RELEASE/spring-boot-project/spring-boot-dependencies/pom.xml.
+	-->
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-devtools -->
+		<!-- https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html#devtools-properties -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
-			<optional>true</optional>
+			<optional>true</optional> <!-- "prevents devtools from being transitively applied to other modules that use your project" -->
 		</dependency>
 
 		<dependency>
