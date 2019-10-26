@@ -59,6 +59,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludeDevtools>true</excludeDevtools> <!-- Do not want spring-boot-devtools making it to production. -->
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
