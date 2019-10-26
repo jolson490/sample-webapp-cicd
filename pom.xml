@@ -15,6 +15,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Convert Units - Flexion coding challenge submission by Joshua Olson</name>
 	<description>Checks provided answers for converted values for temperature or volume</description>
+	<packaging>jar</packaging>
 
 	<licenses>
 		<license>
