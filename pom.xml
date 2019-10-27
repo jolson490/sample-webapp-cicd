@@ -1,96 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-  xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <parent> <!-- https://github.com/spring-projects/spring-boot/blob/v2.2.0.RELEASE/spring-boot-project/spring-boot-starters/spring-boot-starter-parent/pom.xml -->
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.2.0.RELEASE</version>
-    <relativePath /> <!-- lookup parent from repository -->
-  </parent>
-
-  <groupId>us.flexion</groupId>
-  <artifactId>convert-units-jolson490</artifactId>
-  <version>0.0.1-SNAPSHOT</version> <!-- TO-DO -->
-  <name>Convert Units - Flexion coding challenge submission by Joshua Olson</name>
-  <description>Checks provided answers for converted values for temperature or volume</description>
-  <organization>
-    <name>Flexion Inc.</name>
-    <url>https://www.flexion.us/</url>
-  </organization>
-
-  <packaging>jar</packaging>
-  <!-- TO-DO: <url>http://<aws>/convertunits/</url> -->
-
-  <licenses>
-    <license>
-      <name>MIT License</name>
-      <url>https://opensource.org/licenses/MIT</url>
-    </license>
-  </licenses>
-
-  <properties>
-    <java.version>11</java.version> <!-- The newest Java version that has LTS. -->
-  </properties>
-
-  <!-- For a production app we want to pin down specific versions of dependencies, but in this file we don't need to specify the '<version>' of each '<dependency>' from 'org.springframework.boot', 
-    because that's already done for us in https://github.com/spring-projects/spring-boot/blob/v2.2.0.RELEASE/spring-boot-project/spring-boot-dependencies/pom.xml. -->
-  <dependencies>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-
-    <!-- https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-devtools -->
-    <!-- https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html#devtools-properties -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-devtools</artifactId>
-      <scope>runtime</scope>
-      <optional>true</optional> <!-- "prevents devtools from being transitively applied to other modules that use your project" -->
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter</artifactId>
-      <exclusions>
-        <exclusion>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter-logging</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-log4j2</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>org.junit.vintage</groupId>
-          <artifactId>junit-vintage-engine</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-  </dependencies>
-
-  <build>
-    <plugins>
-      <plugin>
+    <parent> <!-- https://github.com/spring-projects/spring-boot/blob/v2.2.0.RELEASE/spring-boot-project/spring-boot-starters/spring-boot-starter-parent/pom.xml -->
         <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-        <configuration>
-          <excludeDevtools>true</excludeDevtools> <!-- Do not want spring-boot-devtools making it to production. -->
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.0.RELEASE</version>
+        <relativePath /> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>us.flexion</groupId>
+    <artifactId>convert-units-jolson490</artifactId>
+    <version>0.0.1-SNAPSHOT</version> <!-- TO-DO -->
+    <name>Convert Units - Flexion coding challenge submission by Joshua Olson</name>
+    <description>Checks provided answers for converted values for temperature or volume</description>
+    <organization>
+        <name>Flexion Inc.</name>
+        <url>https://www.flexion.us/</url>
+    </organization>
+
+    <packaging>jar</packaging>
+    <!-- TO-DO: <url>http://<aws>/convertunits/</url> -->
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
+
+    <properties>
+        <java.version>11</java.version> <!-- The newest Java version that has LTS. -->
+    </properties>
+
+    <!-- For a production app we want to pin down specific versions of dependencies, but in this file we don't need to specify the '<version>' of each '<dependency>' from 'org.springframework.boot', 
+        because that's already done for us in https://github.com/spring-projects/spring-boot/blob/v2.2.0.RELEASE/spring-boot-project/spring-boot-dependencies/pom.xml. -->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-devtools -->
+        <!-- https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html#devtools-properties -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional> <!-- "prevents devtools from being transitively applied to other modules that use your project" -->
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludeDevtools>true</excludeDevtools> <!-- Do not want spring-boot-devtools making it to production. -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
