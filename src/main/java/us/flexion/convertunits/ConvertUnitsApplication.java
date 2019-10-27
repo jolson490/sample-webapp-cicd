@@ -18,6 +18,6 @@ public class ConvertUnitsApplication {
   // Get a warm fuzzy relatively early on during initialization/startup of the application.
   @PostConstruct
   public void logSomething() {
-    logger.debug("in logSomething()");
+    logger.trace("in logSomething()");
   }
 }

@@ -13,7 +13,7 @@ public class UnitsController {
   // curl -X GET http://localhost:8080/convertunits/
   @RequestMapping("/")
   public String home(Model model) {
-    logger.debug("in home()");
+    logger.trace("in home()");
 
     // model.addAttribute("lastUpdated", AppModifiedTime.getTime());
 

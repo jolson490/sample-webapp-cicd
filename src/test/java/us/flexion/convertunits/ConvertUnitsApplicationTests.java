@@ -11,7 +11,7 @@ class ConvertUnitsApplicationTests {
 
   @Test
   void contextLoads() {
-    logger.debug("in contextLoads()");
+    logger.trace("in contextLoads()");
   }
 
 }
