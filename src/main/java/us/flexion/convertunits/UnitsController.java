@@ -78,6 +78,7 @@ public class UnitsController {
       final double convertedValueRounded = Math.round(convertedValue * 10.0) / 10.0; // round to the nearest tenth
       final double studentResponseRounded = Math.round(theBoundProblem.getStudentResponse() * 10.0) / 10.0;
 
+      // The web UI doesn't allow the possibility of invalid data being entered, so no need to have code that displays "invalid" as the output.
       logger.trace("determineOutput(): convertedValue={} convertedValueRounded={} studentResponseRounded={}", convertedValue, convertedValueRounded, studentResponseRounded);
       theBoundProblem.setProblemOutput(convertedValueRounded == studentResponseRounded ? "correct" : "incorrect");
     }
