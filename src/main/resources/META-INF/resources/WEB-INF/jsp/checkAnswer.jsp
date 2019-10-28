@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    In the boxes below fill in the values from a given problem that a student completed from their unit conversion worksheet, and then click "Check" to find out whether their
+    In the boxes below fill in the values from a given problem that a student completed from their unit conversion worksheet, and then click "Check Answer" to find out whether their
     response is correct.
     <br>
     <br> The student was instructed to take the "Input Numerical Value" which is expressed in "Input Unit of Measure", and convert that to the corresponding value (i.e.
