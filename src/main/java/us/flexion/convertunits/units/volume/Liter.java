@@ -1,15 +1,15 @@
-package us.flexion.convertunits.units.temperature;
+package us.flexion.convertunits.units.volume;
 
 import us.flexion.convertunits.units.AUnit;
 import us.flexion.convertunits.units.IBijection;
 
-public class Rankine extends AUnit {
-  public Rankine() {
-    super("R");
+public class Liter extends AUnit {
+  public Liter() {
+    super("L.");
   }
 
   /**
-   * Conversion function from Rankine to base.
+   * Conversion function from Liter to base.
    */
   private final IBijection<Double, Double> _func = new IBijection<Double, Double>() {
     /**
@@ -26,13 +26,13 @@ public class Rankine extends AUnit {
      *
      * @return the value in the "base" scale
      */
-    public Double apply(Double valueRankine) {
-      return (valueRankine - 491.67) * 5 / 9;
+    public Double apply(Double valueLiter) {
+      return valueLiter * 4.226753;
     }
   };
 
   /**
-   * Conversion function from base to Rankine.
+   * Conversion function from base to Liter.
    */
   private final IBijection<Double, Double> _inverse = new IBijection<Double, Double>() {
     /**
@@ -47,21 +47,20 @@ public class Rankine extends AUnit {
     /**
      * Apply the lambda.
      * 
-     * @return the value in Rankine
+     * @return the value in Liter
      */
     public Double apply(Double valueBase) {
-      return (valueBase + 273.15) * 9 / 5;
+      return valueBase * 0.236588;
     }
   };
 
   /**
-   * Returns a function that converts a value in this temperature scale to a value in the "base" temperature scale.
+   * Returns a function that converts a value in this volume scale to a value in the "base" volume scale.
    * 
    * @return conversion function to "base" scale
    */
   protected IBijection<Double, Double> getConversionFunction() {
-    // Celsius is the "base" scale, so the conversion function is the function from Rankine to Celsius, and the inverse of the conversion function is the function from Celsius to
-    // Rankine.
+    // Cup is the "base" scale, so the conversion function is the function from Liter to Cup, and the inverse of the conversion function is the function from Cup to Liter.
     return _func;
   }
 } // class

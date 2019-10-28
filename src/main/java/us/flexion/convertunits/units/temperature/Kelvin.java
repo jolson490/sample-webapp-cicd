@@ -55,9 +55,9 @@ public class Kelvin extends AUnit {
   };
 
   /**
-   * Returns a function that converts a value in this temperature scale to a value in the "base temperature scale".
+   * Returns a function that converts a value in this temperature scale to a value in the "base" temperature scale.
    * 
-   * @return conversion function to "base scale"
+   * @return conversion function to "base" scale
    */
   protected IBijection<Double, Double> getConversionFunction() {
     // Celsius is the "base" scale, so the conversion function is the function from Kelvin to Celsius, and the inverse of the conversion function is the function from Celsius to
