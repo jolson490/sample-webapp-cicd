@@ -11,7 +11,27 @@ public class Problem {
     this.inputValue = inputValue;
   }
 
-  // inputUnit, targetUnit
+  // 'inputUnit' & 'targetUnit' are the Canonical Name of a child class of AUnit.
+
+  private String inputUnit;
+
+  public String getInputUnit() {
+    return inputUnit;
+  }
+
+  public void setInputUnit(String inputUnit) {
+    this.inputUnit = inputUnit;
+  }
+
+  private String targetUnit;
+
+  public String getTargetUnit() {
+    return targetUnit;
+  }
+
+  public void setTargetUnit(String targetUnit) {
+    this.targetUnit = targetUnit;
+  }
 
   private Double studentResponse;
 
@@ -35,6 +55,7 @@ public class Problem {
 
   @Override
   public String toString() {
-    return String.format("Problem[inputValue=%f, studentResponse=%f, problemOutput=%s]", inputValue, studentResponse, problemOutput);
+    return String.format("Problem[inputValue=%f, inputUnit=%s, targetUnit=%s, studentResponse=%f, problemOutput=%s]", inputValue, inputUnit, targetUnit, studentResponse,
+        problemOutput);
   }
 }

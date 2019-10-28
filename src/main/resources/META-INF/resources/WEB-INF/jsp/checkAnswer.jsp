@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -12,8 +13,7 @@
     In the boxes below fill in the values from a given problem that a student completed from their unit conversion worksheet, and then click "Check" to find out whether their
     response is correct.
     <br>
-    <br>
-    The student was instructed to take the "Input Numerical Value" which is expressed in "Input Unit of Measure", and convert that to the corresponding value (i.e.
+    <br> The student was instructed to take the "Input Numerical Value" which is expressed in "Input Unit of Measure", and convert that to the corresponding value (i.e.
     "Student Response") expressed in "Target Unit of Measure".
     <br>
     <br>
@@ -24,7 +24,26 @@
             <label>Input Numerical Value:</label> <input type="number" step="any" name="inputValue" value="${problemAttribute.inputValue}" required />
         </div>
 
-        <%-- inputUnit (Input Unit of Measure), targetUnit (Target Unit of Measure) --%>
+        <div>
+            <label>Input Unit of Measure:</label>
+            <%-- The purpose of 'path' is to bind to the 'inputUnit' variable within the model (i.e. the Problem object). --%>
+            <form:select path="inputUnit" required="true">
+                <form:option value="" />
+                <c:forEach var="unit" items="${inputUnits}">
+                    <form:option id="${unit.key}" value="${unit.key}" label="${unit.value}"></form:option>
+                </c:forEach>
+            </form:select>
+        </div>
+
+        <div>
+            <label>Target Unit of Measure:</label>
+            <form:select path="targetUnit" required="true">
+                <form:option value="" />
+                <c:forEach var="unit" items="${targetUnits}">
+                    <form:option id="${unit.key}" value="${unit.key}" label="${unit.value}"></form:option>
+                </c:forEach>
+            </form:select>
+        </div>
 
         <div>
             <label>Student Response:</label> <input type="number" step="any" name="studentResponse" value="${problemAttribute.studentResponse}" required />
