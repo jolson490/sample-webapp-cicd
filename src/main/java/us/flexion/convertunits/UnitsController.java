@@ -11,7 +11,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +20,8 @@ import us.flexion.convertunits.units.AUnit;
 import us.flexion.convertunits.units.Measurement;
 import us.flexion.convertunits.units.temperature.Celsius;
 import us.flexion.convertunits.units.temperature.Fahrenheit;
+import us.flexion.convertunits.units.temperature.Kelvin;
+import us.flexion.convertunits.units.temperature.Rankine;
 
 @Controller
 public class UnitsController {
@@ -37,6 +38,8 @@ public class UnitsController {
     Map<String, String> units = new LinkedHashMap<String, String>();
     units.put(Celsius.class.getCanonicalName(), Celsius.class.getSimpleName());
     units.put(Fahrenheit.class.getCanonicalName(), Fahrenheit.class.getSimpleName());
+    units.put(Kelvin.class.getCanonicalName(), Kelvin.class.getSimpleName());
+    units.put(Rankine.class.getCanonicalName(), Rankine.class.getSimpleName());
     model.addAttribute(attributeName, units);
   }
 
@@ -55,8 +58,8 @@ public class UnitsController {
   }
 
   @RequestMapping(value = "/checkAnswer", method = RequestMethod.POST)
-  public String checkResponsePost(@ModelAttribute("problemAttribute") Problem theBoundProblem, BindingResult result, Model model) {
-    logger.trace("in checkResponsePost(): theBoundProblem={} result.hasErrors()={}", theBoundProblem, result.hasErrors());
+  public String checkResponsePost(@ModelAttribute("problemAttribute") Problem theBoundProblem, Model model) {
+    logger.trace("in checkResponsePost(): theBoundProblem={}", theBoundProblem);
     addTemperatureAttributes(model);
     determineOutput(theBoundProblem);
     return "checkAnswer";

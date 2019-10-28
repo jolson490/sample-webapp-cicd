@@ -3,13 +3,13 @@ package us.flexion.convertunits.units.temperature;
 import us.flexion.convertunits.units.AUnit;
 import us.flexion.convertunits.units.IBijection;
 
-public class Fahrenheit extends AUnit {
-  public Fahrenheit() {
-    super("F");
+public class Kelvin extends AUnit {
+  public Kelvin() {
+    super("K");
   }
 
   /**
-   * Conversion function from Fahrenheit to base.
+   * Conversion function from Kelvin to base.
    */
   private final IBijection<Double, Double> _func = new IBijection<Double, Double>() {
     /**
@@ -26,13 +26,13 @@ public class Fahrenheit extends AUnit {
      *
      * @return the value in the "base" scale
      */
-    public Double apply(Double valueFahrenheit) {
-      return (valueFahrenheit - 32.0) / 9.0 * 5.0;
+    public Double apply(Double valueKelvin) {
+      return valueKelvin - 273.15;
     }
   };
 
   /**
-   * Conversion function from base to Fahrenheit.
+   * Conversion function from base to Kelvin.
    */
   private final IBijection<Double, Double> _inverse = new IBijection<Double, Double>() {
     /**
@@ -47,21 +47,21 @@ public class Fahrenheit extends AUnit {
     /**
      * Apply the lambda.
      * 
-     * @return the value in Fahrenheit
+     * @return the value in Kelvins
      */
     public Double apply(Double valueBase) {
-      return valueBase / 5.0 * 9.0 + 32.0;
+      return valueBase + 273.15;
     }
   };
 
   /**
-   * Returns a function that converts a value in this temperature scale to a value in the "base" temperature scale.
+   * Returns a function that converts a value in this temperature scale to a value in the "base temperature scale".
    * 
-   * @return conversion function to "base" scale.
+   * @return conversion function to "base scale"
    */
   protected IBijection<Double, Double> getConversionFunction() {
-    // Celsius is the "base" scale, so the conversion function is the function from Fahrenheit to Celsius, and the inverse of the conversion function is the function from Celsius
-    // to Fahrenheit.
+    // Celsius is the "base" scale, so the conversion function is the function from Kelvin to Celsius, and the inverse of the conversion function is the function from Celsius to
+    // Kelvin.
     return _func;
   }
 } // class
