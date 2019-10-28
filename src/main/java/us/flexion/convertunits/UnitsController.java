@@ -1,5 +1,7 @@
 package us.flexion.convertunits;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import us.flexion.convertunits.model.Problem;
+import us.flexion.convertunits.units.AUnit;
+import us.flexion.convertunits.units.Measurement;
 import us.flexion.convertunits.units.temperature.Celsius;
 import us.flexion.convertunits.units.temperature.Fahrenheit;
 
@@ -52,7 +56,41 @@ public class UnitsController {
   public String checkResponsePost(@ModelAttribute("problemAttribute") Problem theBoundProblem, BindingResult result, Model model) {
     logger.trace("in checkResponsePost(): theBoundProblem={} result.hasErrors()={}", theBoundProblem, result.hasErrors());
     addTemperatureAttributes(model);
-    theBoundProblem.setProblemOutput("correct"); // TODO actually check the student's answer
+    determineOutput(theBoundProblem);
     return "checkAnswer";
+  }
+
+  private void determineOutput(Problem theBoundProblem) {
+    final AUnit inputUnitObject = getUnitObjectFromName(theBoundProblem.getInputUnit());
+    final Measurement inputMeasurement = new Measurement(theBoundProblem.getInputValue(), inputUnitObject);
+
+    final AUnit targetUnitObject = getUnitObjectFromName(theBoundProblem.getTargetUnit());
+    final double convertedValue = targetUnitObject.convertTo(inputMeasurement).getValue();
+
+    final double convertedValueRounded = Math.round(convertedValue * 10.0) / 10.0; // round to the nearest tenth
+
+    final double studentResponseRounded = Math.round(theBoundProblem.getStudentResponse() * 10.0) / 10.0;
+    logger.trace("checkResponsePost(): convertedValue={} convertedValueRounded={} studentResponseRounded={}", convertedValue, convertedValueRounded, studentResponseRounded);
+
+    final String output = convertedValueRounded == studentResponseRounded ? "correct" : "incorrect";
+
+    theBoundProblem.setProblemOutput(output);
+  }
+
+  private AUnit getUnitObjectFromName(String canonicalName) {
+    logger.trace("in getUnitObjectFromName(): canonicalName={}", canonicalName);
+    AUnit unit = null;
+    try {
+      Class<?> clasz = Class.forName(canonicalName);
+      Constructor<?>[] allConstructors = clasz.getConstructors();
+      Class<?>[] parametersOfConstructor1 = allConstructors[0].getParameterTypes();
+      Constructor<?> constructor = clasz.getConstructor(parametersOfConstructor1);
+      unit = (AUnit) constructor.newInstance();
+      logger.debug("getUnitObjectFromName(): unit={}", unit);
+    } catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException
+        | InvocationTargetException e) {
+      e.printStackTrace();
+    }
+    return unit;
   }
 } // class
