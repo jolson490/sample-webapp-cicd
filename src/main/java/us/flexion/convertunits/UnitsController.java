@@ -1,5 +1,7 @@
 package us.flexion.convertunits;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedHashMap;
@@ -62,34 +64,37 @@ public class UnitsController {
 
   private void determineOutput(Problem theBoundProblem) {
     final AUnit inputUnitObject = getUnitObjectFromName(theBoundProblem.getInputUnit());
-    final Measurement inputMeasurement = new Measurement(theBoundProblem.getInputValue(), inputUnitObject);
-
     final AUnit targetUnitObject = getUnitObjectFromName(theBoundProblem.getTargetUnit());
-    final double convertedValue = targetUnitObject.convertTo(inputMeasurement).getValue();
+    if (inputUnitObject == null || targetUnitObject == null) {
+      theBoundProblem.setProblemOutput("<system error occurred>");
+    } else {
+      final Measurement inputMeasurement = new Measurement(theBoundProblem.getInputValue(), inputUnitObject);
 
-    final double convertedValueRounded = Math.round(convertedValue * 10.0) / 10.0; // round to the nearest tenth
+      final double convertedValue = targetUnitObject.convertTo(inputMeasurement).getValue(); // The correct/actual answer
 
-    final double studentResponseRounded = Math.round(theBoundProblem.getStudentResponse() * 10.0) / 10.0;
-    logger.trace("checkResponsePost(): convertedValue={} convertedValueRounded={} studentResponseRounded={}", convertedValue, convertedValueRounded, studentResponseRounded);
+      final double convertedValueRounded = Math.round(convertedValue * 10.0) / 10.0; // round to the nearest tenth
+      final double studentResponseRounded = Math.round(theBoundProblem.getStudentResponse() * 10.0) / 10.0;
 
-    final String output = convertedValueRounded == studentResponseRounded ? "correct" : "incorrect";
-
-    theBoundProblem.setProblemOutput(output);
+      logger.trace("determineOutput(): convertedValue={} convertedValueRounded={} studentResponseRounded={}", convertedValue, convertedValueRounded, studentResponseRounded);
+      theBoundProblem.setProblemOutput(convertedValueRounded == studentResponseRounded ? "correct" : "incorrect");
+    }
   }
 
   private AUnit getUnitObjectFromName(String canonicalName) {
     logger.trace("in getUnitObjectFromName(): canonicalName={}", canonicalName);
     AUnit unit = null;
     try {
-      Class<?> clasz = Class.forName(canonicalName);
-      Constructor<?>[] allConstructors = clasz.getConstructors();
-      Class<?>[] parametersOfConstructor1 = allConstructors[0].getParameterTypes();
-      Constructor<?> constructor = clasz.getConstructor(parametersOfConstructor1);
+      final Class<?> clasz = Class.forName(canonicalName);
+      final Constructor<?>[] allConstructors = clasz.getConstructors();
+      final Class<?>[] parametersOfConstructor1 = allConstructors[0].getParameterTypes();
+      final Constructor<?> constructor = clasz.getConstructor(parametersOfConstructor1);
       unit = (AUnit) constructor.newInstance();
       logger.debug("getUnitObjectFromName(): unit={}", unit);
     } catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException
-        | InvocationTargetException e) {
-      e.printStackTrace();
+        | InvocationTargetException exception) {
+      StringWriter errors = new StringWriter();
+      exception.printStackTrace(new PrintWriter(errors));
+      logger.error("getUnitObjectFromName(): caught exception: {}", errors.toString());
     }
     return unit;
   }
