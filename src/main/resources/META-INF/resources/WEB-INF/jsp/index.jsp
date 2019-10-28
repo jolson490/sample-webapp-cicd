@@ -8,7 +8,8 @@
 </head>
 
 <body>
-    <a href="${pageContext.request.contextPath}/checkAnswer">Check provided answers for converted values for temperature or volume</a><br>
+    <a href="${pageContext.request.contextPath}/checkAnswer">Click here</a> to check provided answers for converted values for temperature or volume.
+    <br>
     <br>
 
     <i>For more info, see the <a target="_blank" href="https://github.com/jolson490/convert-units">GitHub repository</a>.
