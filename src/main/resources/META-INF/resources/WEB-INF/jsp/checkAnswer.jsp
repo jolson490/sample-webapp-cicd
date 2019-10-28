@@ -10,12 +10,12 @@
 </head>
 
 <body>
-    In the boxes below fill in the values from a given problem that a student completed from their unit conversion worksheet, and then click "Check Answer" to find out whether their
-    response is correct.
+    In the boxes below fill in the values from a given problem that a student completed from their unit conversion worksheet, and then click "Check Answer" to find out whether
+    their response is correct.
     <br>
     <br>The student was instructed to take the "Input Numerical Value" which is expressed in "Input Unit of Measure", and convert that to the corresponding value (i.e.
-    "Student Response") expressed in "Target Unit of Measure" and round that to the nearest tenth. The student's answer is deemed to be correct if it is equal to the
-    actual converted value rounded to the nearest tenth.
+    "Student Response") expressed in "Target Unit of Measure" and round that to the nearest tenth. The student's answer is deemed to be correct if it is equal to the actual
+    converted value rounded to the nearest tenth.
     <br>
     <br>
 

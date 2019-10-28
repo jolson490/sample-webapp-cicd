@@ -3,8 +3,8 @@
 <html>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Convert Units - Flexion coding challenge submission by Joshua Olson</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Convert Units - Flexion coding challenge submission by Joshua Olson</title>
 </head>
 
 <body>
