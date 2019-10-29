@@ -24,6 +24,16 @@
     <%-- The form data is bound to the model specified by the modelAttribute. --%>
     <form:form action="checkAnswer" method="post" modelAttribute="problemAttribute">
         <div>
+            <label>Type of Unit:</label>
+            <%-- It would be ideal if this entire page wouldn't need to be reloaded whenever the user changes the value for the following dropdown menu, e.g. via AJAX. --%>
+            <form:select path="unitType" onchange="this.form.submit();" required="true">
+                <form:option value="" />
+                <form:option id="Temperature" value="Temperature" label="Temperature"></form:option>
+                <form:option id="Volume" value="Volume" label="Volume"></form:option>
+            </form:select>
+        </div>
+
+        <div>
             <label>Input Numerical Value:</label> <input type="number" step="any" name="inputValue" value="${problemAttribute.inputValue}" required />
         </div>
 

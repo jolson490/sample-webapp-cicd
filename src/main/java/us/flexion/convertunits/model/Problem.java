@@ -1,6 +1,16 @@
 package us.flexion.convertunits.model;
 
 public class Problem {
+  private String unitType;
+
+  public String getUnitType() {
+    return unitType;
+  }
+
+  public void setUnitType(String unitType) {
+    this.unitType = unitType;
+  }
+
   private Double inputValue;
 
   public Double getInputValue() {
@@ -55,7 +65,22 @@ public class Problem {
 
   @Override
   public String toString() {
-    return String.format("Problem[inputValue=%f, inputUnit=%s, targetUnit=%s, studentResponse=%f, problemOutput=%s]", inputValue, inputUnit, targetUnit, studentResponse,
-        problemOutput);
+    return String.format("Problem[unitType=%s inputValue=%f, inputUnit=%s, targetUnit=%s, studentResponse=%f, problemOutput=%s]", unitType, inputValue, inputUnit, targetUnit,
+        studentResponse, problemOutput);
+  }
+
+  // Returns whether all fields (other than 'problemOutput') in this class have been set - i.e. whether 'problemOutput' can be calculated.
+  public boolean allDataProvided() {
+    if (isNullOrEmpty(getUnitType()) || getInputValue() == null || isNullOrEmpty(getInputUnit()) || isNullOrEmpty(getTargetUnit()) || getStudentResponse() == null) {
+      return false;
+    }
+    return true;
+  }
+
+  private boolean isNullOrEmpty(String str) {
+    if (str != null && !str.isEmpty()) {
+      return false;
+    }
+    return true;
   }
 }

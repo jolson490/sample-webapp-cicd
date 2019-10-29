@@ -22,6 +22,12 @@ import us.flexion.convertunits.units.temperature.Celsius;
 import us.flexion.convertunits.units.temperature.Fahrenheit;
 import us.flexion.convertunits.units.temperature.Kelvin;
 import us.flexion.convertunits.units.temperature.Rankine;
+import us.flexion.convertunits.units.volume.CubicFoot;
+import us.flexion.convertunits.units.volume.CubicInch;
+import us.flexion.convertunits.units.volume.Cup;
+import us.flexion.convertunits.units.volume.Gallon;
+import us.flexion.convertunits.units.volume.Liter;
+import us.flexion.convertunits.units.volume.Tablespoon;
 
 @Controller
 public class UnitsController {
@@ -34,17 +40,29 @@ public class UnitsController {
     return "index";
   }
 
-  private void addTemperaturesToNamedAttribute(Model model, String attributeName) {
+  private void addUnitAttributes(Model model, String unitType) {
     Map<String, String> units = new LinkedHashMap<String, String>();
-    units.put(Celsius.class.getCanonicalName(), Celsius.class.getSimpleName());
-    units.put(Fahrenheit.class.getCanonicalName(), Fahrenheit.class.getSimpleName());
-    units.put(Kelvin.class.getCanonicalName(), Kelvin.class.getSimpleName());
-    units.put(Rankine.class.getCanonicalName(), Rankine.class.getSimpleName());
-    model.addAttribute(attributeName, units);
-  }
 
-  private void addTemperatureAttributes(Model model) {
-    addTemperaturesToNamedAttribute(model, "listUnits");
+    if (unitType == null) {
+      // do nothing
+    } else if (unitType.equals("Temperature")) {
+      units.put(Celsius.class.getCanonicalName(), Celsius.class.getSimpleName());
+      units.put(Fahrenheit.class.getCanonicalName(), Fahrenheit.class.getSimpleName());
+      units.put(Kelvin.class.getCanonicalName(), Kelvin.class.getSimpleName());
+      units.put(Rankine.class.getCanonicalName(), Rankine.class.getSimpleName());
+    } else if (unitType.equals("Volume")) {
+      units.put(CubicFoot.class.getCanonicalName(), CubicFoot.class.getSimpleName());
+      units.put(CubicInch.class.getCanonicalName(), CubicInch.class.getSimpleName());
+      units.put(Cup.class.getCanonicalName(), Cup.class.getSimpleName());
+      units.put(Gallon.class.getCanonicalName(), Gallon.class.getSimpleName());
+      units.put(Liter.class.getCanonicalName(), Liter.class.getSimpleName());
+      units.put(Tablespoon.class.getCanonicalName(), Tablespoon.class.getSimpleName());
+    } else {
+      // It's not possible to get in here, but still write a line of code to log an error anyway.
+      logger.error("addUnitAttributes(): encountered unexpected unitType: {}", unitType);
+    }
+
+    model.addAttribute("listUnits", units);
   }
 
   // curl -X GET http://localhost:8080/convertunits/checkAnswer
@@ -52,36 +70,41 @@ public class UnitsController {
   public String checkResponse(Model model) {
     logger.trace("in checkResponse()");
     model.addAttribute("problemAttribute", new Problem());
-    addTemperatureAttributes(model);
+    addUnitAttributes(model, null);
     return "checkAnswer";
   }
 
   @RequestMapping(value = "/checkAnswer", method = RequestMethod.POST)
   public String checkResponsePost(@ModelAttribute("problemAttribute") Problem theBoundProblem, Model model) {
     logger.trace("in checkResponsePost(): theBoundProblem={}", theBoundProblem);
-    addTemperatureAttributes(model);
+    addUnitAttributes(model, theBoundProblem.getUnitType());
     determineOutput(theBoundProblem);
     return "checkAnswer";
   }
 
+  // Determines whether the student's response is correct.
+  // Note that the web UI doesn't allow the possibility of invalid data being entered, so no need to have code that displays "invalid" as the output.
   private void determineOutput(Problem theBoundProblem) {
-    final AUnit inputUnitObject = getUnitObjectFromName(theBoundProblem.getInputUnit());
-    final AUnit targetUnitObject = getUnitObjectFromName(theBoundProblem.getTargetUnit());
-    if (inputUnitObject == null || targetUnitObject == null) {
-      theBoundProblem.setProblemOutput("<system error occurred>");
-    } else {
-      final Measurement inputMeasurement = new Measurement(theBoundProblem.getInputValue(), inputUnitObject);
+    // The following if check will not be entered when the user changes the value of the "Type of Unit" dropdown menu without having specified the rest of the fields.
+    if (theBoundProblem.allDataProvided()) {
+      final AUnit inputUnitObject = getUnitObjectFromName(theBoundProblem.getInputUnit());
+      final AUnit targetUnitObject = getUnitObjectFromName(theBoundProblem.getTargetUnit());
+      if (inputUnitObject == null || targetUnitObject == null) {
+        // It shouldn't be possible for the user to cause this code to get executed, but this code is still here just in case so the situation would be gracefully handled.
+        theBoundProblem.setProblemOutput("<system error occurred>");
+      } else {
+        final Measurement inputMeasurement = new Measurement(theBoundProblem.getInputValue(), inputUnitObject);
 
-      final double convertedValue = targetUnitObject.convertTo(inputMeasurement).getValue(); // The correct/actual answer
+        final double convertedValue = targetUnitObject.convertTo(inputMeasurement).getValue(); // The correct/actual answer
 
-      final double convertedValueRounded = Math.round(convertedValue * 10.0) / 10.0; // round to the nearest tenth
-      final double studentResponseRounded = Math.round(theBoundProblem.getStudentResponse() * 10.0) / 10.0;
+        final double convertedValueRounded = Math.round(convertedValue * 10.0) / 10.0; // round to the nearest tenth
+        final double studentResponseRounded = Math.round(theBoundProblem.getStudentResponse() * 10.0) / 10.0;
 
-      // The web UI doesn't allow the possibility of invalid data being entered, so no need to have code that displays "invalid" as the output.
-      logger.trace("determineOutput(): convertedValue={} convertedValueRounded={} studentResponseRounded={}", convertedValue, convertedValueRounded, studentResponseRounded);
-      theBoundProblem.setProblemOutput(convertedValueRounded == studentResponseRounded ? "correct" : "incorrect");
+        logger.trace("determineOutput(): convertedValue={} convertedValueRounded={} studentResponseRounded={}", convertedValue, convertedValueRounded, studentResponseRounded);
+        theBoundProblem.setProblemOutput(convertedValueRounded == studentResponseRounded ? "correct" : "incorrect");
+      }
     }
-  }
+  } // determineOutput
 
   private AUnit getUnitObjectFromName(String canonicalName) {
     logger.trace("in getUnitObjectFromName(): canonicalName={}", canonicalName);
