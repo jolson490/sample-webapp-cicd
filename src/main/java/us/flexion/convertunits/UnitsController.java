@@ -44,8 +44,7 @@ public class UnitsController {
   }
 
   private void addTemperatureAttributes(Model model) {
-    addTemperaturesToNamedAttribute(model, "inputUnits");
-    addTemperaturesToNamedAttribute(model, "targetUnits");
+    addTemperaturesToNamedAttribute(model, "listUnits");
   }
 
   // curl -X GET http://localhost:8080/convertunits/checkAnswer

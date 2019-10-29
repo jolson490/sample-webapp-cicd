@@ -32,7 +32,7 @@
             <%-- The purpose of 'path' is to bind to the 'inputUnit' variable within the model (i.e. the Problem object). --%>
             <form:select path="inputUnit" required="true">
                 <form:option value="" />
-                <c:forEach var="unit" items="${inputUnits}">
+                <c:forEach var="unit" items="${listUnits}">
                     <form:option id="${unit.key}" value="${unit.key}" label="${unit.value}"></form:option>
                 </c:forEach>
             </form:select>
@@ -42,7 +42,7 @@
             <label>Target Unit of Measure:</label>
             <form:select path="targetUnit" required="true">
                 <form:option value="" />
-                <c:forEach var="unit" items="${targetUnits}">
+                <c:forEach var="unit" items="${listUnits}">
                     <form:option id="${unit.key}" value="${unit.key}" label="${unit.value}"></form:option>
                 </c:forEach>
             </form:select>
