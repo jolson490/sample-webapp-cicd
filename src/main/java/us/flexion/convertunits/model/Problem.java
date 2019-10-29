@@ -1,13 +1,39 @@
 package us.flexion.convertunits.model;
 
-public class Problem {
-  private String unitType;
+import java.util.HashMap;
+import java.util.Map;
 
-  public String getUnitType() {
+public class Problem {
+  public enum UnitTypes {
+    TEMPERATURE("Temperature"), VOLUME("Volume");
+
+    public final String label;
+
+    private UnitTypes(String label) {
+      this.label = label;
+    }
+
+    @Override
+    public String toString() {
+      return label;
+    }
+
+    public static Map<String, String> getEnumAsMap() {
+      Map<String, String> unitTypesMap = new HashMap<String, String>();
+      for (UnitTypes unitType : UnitTypes.values()) {
+        unitTypesMap.put(unitType.name(), unitType.label);
+      }
+      return unitTypesMap;
+    }
+  }
+
+  private UnitTypes unitType;
+
+  public UnitTypes getUnitType() {
     return unitType;
   }
 
-  public void setUnitType(String unitType) {
+  public void setUnitType(UnitTypes unitType) {
     this.unitType = unitType;
   }
 
@@ -71,7 +97,7 @@ public class Problem {
 
   // Returns whether all fields (other than 'problemOutput') in this class have been set - i.e. whether 'problemOutput' can be calculated.
   public boolean allDataProvided() {
-    if (isNullOrEmpty(getUnitType()) || getInputValue() == null || isNullOrEmpty(getInputUnit()) || isNullOrEmpty(getTargetUnit()) || getStudentResponse() == null) {
+    if (getUnitType() == null || getInputValue() == null || isNullOrEmpty(getInputUnit()) || isNullOrEmpty(getTargetUnit()) || getStudentResponse() == null) {
       return false;
     }
     return true;

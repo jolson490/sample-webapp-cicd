@@ -28,8 +28,9 @@
             <%-- It would be ideal if this entire page wouldn't need to be reloaded whenever the user changes the value for the following dropdown menu, e.g. via AJAX. --%>
             <form:select path="unitType" onchange="this.form.submit();" required="true">
                 <form:option value="" />
-                <form:option id="Temperature" value="Temperature" label="Temperature"></form:option>
-                <form:option id="Volume" value="Volume" label="Volume"></form:option>
+                <c:forEach var="unitType" items="${listUnitTypes}">
+                    <form:option id="${unitType.key}" value="${unitType.key}" label="${unitType.value}"></form:option>
+                </c:forEach>
             </form:select>
         </div>
 

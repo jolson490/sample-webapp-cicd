@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import us.flexion.convertunits.model.Problem;
+import us.flexion.convertunits.model.Problem.UnitTypes;
 import us.flexion.convertunits.units.AUnit;
 import us.flexion.convertunits.units.Measurement;
 import us.flexion.convertunits.units.temperature.Celsius;
@@ -40,17 +41,22 @@ public class UnitsController {
     return "index";
   }
 
-  private void addUnitAttributes(Model model, String unitType) {
+  private void addUnitAttributes(Model model, UnitTypes unitType) {
     Map<String, String> units = new LinkedHashMap<String, String>();
-
     if (unitType == null) {
       // do nothing
-    } else if (unitType.equals("Temperature")) {
+    } else if (unitType == UnitTypes.TEMPERATURE) {
+      // Ideally each temperature (and ditto for volume) would somehow be grouped together - e.g. either:
+      // * a "Temperature" class that each Celsius/Fahrenheit/etc. class extends.
+      // * or a class named "TemperatureTypes", which would be similar to the UnitTypes class.
+      // i.e. so instead of having a line of code to 'put' each temperature into 'units', there'd be a single line of code here to add all the temperatures to 'units' (similar to
+      // what's done below by 'UnitTypes.getEnumAsMap()') - so that if/when a new temperature class is created then we don't have to remember to add a corresponding line for it
+      // here.
       units.put(Celsius.class.getCanonicalName(), Celsius.class.getSimpleName());
       units.put(Fahrenheit.class.getCanonicalName(), Fahrenheit.class.getSimpleName());
       units.put(Kelvin.class.getCanonicalName(), Kelvin.class.getSimpleName());
       units.put(Rankine.class.getCanonicalName(), Rankine.class.getSimpleName());
-    } else if (unitType.equals("Volume")) {
+    } else if (unitType == UnitTypes.VOLUME) {
       units.put(CubicFoot.class.getCanonicalName(), CubicFoot.class.getSimpleName());
       units.put(CubicInch.class.getCanonicalName(), CubicInch.class.getSimpleName());
       units.put(Cup.class.getCanonicalName(), Cup.class.getSimpleName());
@@ -61,8 +67,10 @@ public class UnitsController {
       // It's not possible to get in here, but still write a line of code to log an error anyway.
       logger.error("addUnitAttributes(): encountered unexpected unitType: {}", unitType);
     }
-
     model.addAttribute("listUnits", units);
+
+    final Map<String, String> listUnitTypes = UnitTypes.getEnumAsMap();
+    model.addAttribute("listUnitTypes", listUnitTypes);
   }
 
   // curl -X GET http://localhost:8080/convertunits/checkAnswer
