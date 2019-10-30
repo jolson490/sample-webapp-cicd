@@ -77,7 +77,7 @@ public class UnitsController {
   @RequestMapping(value = "/checkAnswer", method = RequestMethod.GET)
   public String checkResponse(Model model) {
     logger.trace("in checkResponse()");
-    model.addAttribute("problemAttribute", new Problem());
+    model.addAttribute("problemAttribute", Problem.builder().build());
     addUnitAttributes(model, null);
     return "checkAnswer";
   }
@@ -92,14 +92,14 @@ public class UnitsController {
 
   // Determines whether the student's response is correct.
   // Note that the web UI doesn't allow the possibility of invalid data being entered, so no need to have code that displays "invalid" as the output.
-  private void determineOutput(Problem theBoundProblem) {
+  public void determineOutput(Problem theBoundProblem) {
     // The following if check will not be entered when the user changes the value of the "Type of Unit" dropdown menu without having specified the rest of the fields.
     if (theBoundProblem.allDataProvided()) {
       final AUnit inputUnitObject = getUnitObjectFromName(theBoundProblem.getInputUnit());
       final AUnit targetUnitObject = getUnitObjectFromName(theBoundProblem.getTargetUnit());
       if (inputUnitObject == null || targetUnitObject == null) {
         // It shouldn't be possible for the user to cause this code to get executed, but this code is still here just in case so the situation would be gracefully handled.
-        theBoundProblem.setProblemOutput("<system error occurred>");
+        theBoundProblem.setProblemOutput("invalid");
       } else {
         final Measurement inputMeasurement = new Measurement(theBoundProblem.getInputValue(), inputUnitObject);
 
