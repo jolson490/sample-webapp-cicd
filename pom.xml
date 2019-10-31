@@ -15,13 +15,12 @@
     <version>0.0.1-SNAPSHOT</version> <!-- TO-DO -->
     <name>Convert Units - Flexion coding challenge submission by Joshua Olson</name>
     <description>Checks provided answers for converted values for temperature or volume</description>
+    <packaging>jar</packaging>
+    <url>http://convertunits.us-east-2.elasticbeanstalk.com/convertunits/</url>
     <organization>
         <name>Flexion Inc.</name>
         <url>https://www.flexion.us/</url>
     </organization>
-
-    <packaging>jar</packaging>
-    <!-- TO-DO: <url>http://<aws>/convertunits/</url> -->
 
     <licenses>
         <license>
@@ -70,10 +69,18 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jdt.core.compiler</groupId>
+            <artifactId>ecj</artifactId>
+            <version>4.6.1</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
