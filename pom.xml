@@ -30,7 +30,10 @@
     </licenses>
 
     <properties>
-        <java.version>1.8</java.version> <!-- The newest Java version that AWS Elastic Beanstalk supports. -->
+        <!-- The newest Java version that AWS Elastic Beanstalk supports. -->
+        <java.version>1.8</java.version>
+        <!-- There's only "public static void main" method in this repo/app, but still specify the main class just to be explicit. -->
+        <start-class>us.flexion.convertunits.ConvertUnitsApplication</start-class>
     </properties>
 
     <!-- For a production app we want to pin down specific versions of dependencies, but in this file we don't need to specify the '<version>' of each '<dependency>' from 'org.springframework.boot', 
