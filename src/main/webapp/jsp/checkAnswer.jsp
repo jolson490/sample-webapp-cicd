@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Check Answer</title>
-<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<link rel="icon" type="image/x-icon" href="assets/static/favicon.ico" />
 </head>
 
 <body>
