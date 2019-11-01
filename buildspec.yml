@@ -12,3 +12,4 @@ phases:
 artifacts:
   files:
     - convert-units-jolson490-0.0.1-SNAPSHOT.war
+  base-directory: 'target/convert-units-jolson490-0.0.1-SNAPSHOT'
