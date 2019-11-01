@@ -15,5 +15,5 @@ phases:
       - mvn package -DskipTests
 artifacts:
   files:
-    - 'target/convert-units-jolson490-0.0.1-SNAPSHOT.jar'
+    - 'target/convert-units-jolson490-0.0.1-SNAPSHOT.war'
   discard-paths: yes
