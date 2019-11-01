@@ -35,9 +35,12 @@ public class ConvertUnitsApplication extends SpringBootServletInitializer {
 // Just to test out a REST controller
 @RestController
 class GreetingController {
+  private static final Logger logger = LogManager.getLogger(GreetingController.class);
+
   // e.g. http://localhost:8080/convertunits/hello/JoshO
   @RequestMapping("/hello/{name}")
   public String hello(@PathVariable String name) {
+    logger.trace("in hello(): name={}", name);
     return "Hello, " + name + "!";
   }
 }
