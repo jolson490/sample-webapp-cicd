@@ -30,7 +30,7 @@
     </licenses>
 
     <properties>
-        <java.version>8</java.version> <!-- The newest Java version that AWS Elastic Beanstalk supports. -->
+        <java.version>1.8</java.version> <!-- The newest Java version that AWS Elastic Beanstalk supports. -->
     </properties>
 
     <!-- For a production app we want to pin down specific versions of dependencies, but in this file we don't need to specify the '<version>' of each '<dependency>' from 'org.springframework.boot', 
