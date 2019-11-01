@@ -38,6 +38,7 @@ public class UnitsController {
   @RequestMapping("/")
   public String home(Model model) {
     logger.trace("in home()");
+    model.addAttribute("lastUpdated", AppModifiedTime.getTime());
     return "index";
   }
 

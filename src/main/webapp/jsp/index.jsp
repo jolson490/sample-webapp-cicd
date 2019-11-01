@@ -11,6 +11,8 @@
 <body>
     <a href="${pageContext.request.contextPath}/checkAnswer">Click here</a> to check provided answers for converted values for temperature or volume.
     <br>
+    <br> This application was last updated/deployed at: ${lastUpdated}
+    <br>
     <br>
 
     <i>For more info, see the <a target="_blank" href="https://github.com/jolson490/convert-units">GitHub repository</a>.
