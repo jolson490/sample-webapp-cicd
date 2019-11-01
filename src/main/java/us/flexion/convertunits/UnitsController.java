@@ -109,7 +109,7 @@ public class UnitsController {
         final double convertedValueRounded = Math.round(convertedValue * 10.0) / 10.0; // round to the nearest tenth
         final double studentResponseRounded = Math.round(theBoundProblem.getStudentResponse() * 10.0) / 10.0;
 
-        logger.trace("determineOutput(): convertedValue={} convertedValueRounded={} studentResponseRounded={}", convertedValue, convertedValueRounded, studentResponseRounded);
+        logger.debug("determineOutput(): convertedValue={} convertedValueRounded={} studentResponseRounded={}", convertedValue, convertedValueRounded, studentResponseRounded);
         theBoundProblem.setProblemOutput(convertedValueRounded == studentResponseRounded ? "correct" : "incorrect");
       }
     }
