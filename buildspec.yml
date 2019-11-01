@@ -4,16 +4,12 @@ phases:
   install:
     runtime-versions:
         java: corretto8
-  build:
-    commands:
-      - echo Build started on `date`
-      - mvn clean
-      - mvn test
   post_build:
     commands:
       - echo Build completed on `date`
-      - mvn package -DskipTests
+      - mvn package
+      - mv target/convert-units-jolson490-0.0.1-SNAPSHOT.war convert-units-jolson490-0.0.1-SNAPSHOT.war
 artifacts:
   files:
-    - 'target/convert-units-jolson490-0.0.1-SNAPSHOT.war'
-  discard-paths: yes
+    - convert-units-jolson490-0.0.1-SNAPSHOT.war
+  base-directory: 'target/convert-units'
