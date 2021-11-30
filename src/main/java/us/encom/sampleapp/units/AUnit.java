@@ -1,4 +1,4 @@
-package us.flexion.sampleapp.units;
+package us.encom.sampleapp.units;
 
 /**
  * Abstract class for a unit of measure.

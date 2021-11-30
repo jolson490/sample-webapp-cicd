@@ -1,4 +1,4 @@
-package us.flexion.sampleapp.units;
+package us.encom.sampleapp.units;
 
 public class Measurement {
   /**

@@ -27,7 +27,7 @@
             <AppenderRef ref="RollingFile" />
         </Root>
 
-        <Logger name="us.flexion.sampleapp" level="TRACE"> </Logger>
+        <Logger name="us.encom.sampleapp" level="TRACE"> </Logger>
 
         <!-- Leaving the following line here as a placeholder for if/when Spring needs to be debugged. -->
         <!-- <Logger name="org.springframework" level="DEBUG"> </Logger> -->

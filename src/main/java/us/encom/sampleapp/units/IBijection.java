@@ -1,4 +1,4 @@
-package us.flexion.sampleapp.units;
+package us.encom.sampleapp.units;
 
 /**
  * A bijection is a function that has an inverse. R = return, P = parameter.

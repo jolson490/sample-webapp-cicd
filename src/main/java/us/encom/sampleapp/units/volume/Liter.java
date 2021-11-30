@@ -1,7 +1,7 @@
-package us.flexion.sampleapp.units.volume;
+package us.encom.sampleapp.units.volume;
 
-import us.flexion.sampleapp.units.AUnit;
-import us.flexion.sampleapp.units.IBijection;
+import us.encom.sampleapp.units.AUnit;
+import us.encom.sampleapp.units.IBijection;
 
 public class Liter extends AUnit {
   public Liter() {

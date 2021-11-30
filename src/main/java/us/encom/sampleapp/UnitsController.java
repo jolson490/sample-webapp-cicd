@@ -1,4 +1,4 @@
-package us.flexion.sampleapp;
+package us.encom.sampleapp;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -15,20 +15,20 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import us.flexion.sampleapp.model.Problem;
-import us.flexion.sampleapp.model.Problem.UnitTypes;
-import us.flexion.sampleapp.units.AUnit;
-import us.flexion.sampleapp.units.Measurement;
-import us.flexion.sampleapp.units.temperature.Celsius;
-import us.flexion.sampleapp.units.temperature.Fahrenheit;
-import us.flexion.sampleapp.units.temperature.Kelvin;
-import us.flexion.sampleapp.units.temperature.Rankine;
-import us.flexion.sampleapp.units.volume.CubicFoot;
-import us.flexion.sampleapp.units.volume.CubicInch;
-import us.flexion.sampleapp.units.volume.Cup;
-import us.flexion.sampleapp.units.volume.Gallon;
-import us.flexion.sampleapp.units.volume.Liter;
-import us.flexion.sampleapp.units.volume.Tablespoon;
+import us.encom.sampleapp.model.Problem;
+import us.encom.sampleapp.model.Problem.UnitTypes;
+import us.encom.sampleapp.units.AUnit;
+import us.encom.sampleapp.units.Measurement;
+import us.encom.sampleapp.units.temperature.Celsius;
+import us.encom.sampleapp.units.temperature.Fahrenheit;
+import us.encom.sampleapp.units.temperature.Kelvin;
+import us.encom.sampleapp.units.temperature.Rankine;
+import us.encom.sampleapp.units.volume.CubicFoot;
+import us.encom.sampleapp.units.volume.CubicInch;
+import us.encom.sampleapp.units.volume.Cup;
+import us.encom.sampleapp.units.volume.Gallon;
+import us.encom.sampleapp.units.volume.Liter;
+import us.encom.sampleapp.units.volume.Tablespoon;
 
 @Controller
 public class UnitsController {

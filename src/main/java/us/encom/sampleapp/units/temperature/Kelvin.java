@@ -1,7 +1,7 @@
-package us.flexion.sampleapp.units.temperature;
+package us.encom.sampleapp.units.temperature;
 
-import us.flexion.sampleapp.units.AUnit;
-import us.flexion.sampleapp.units.IBijection;
+import us.encom.sampleapp.units.AUnit;
+import us.encom.sampleapp.units.IBijection;
 
 public class Kelvin extends AUnit {
   public Kelvin() {

@@ -1,4 +1,4 @@
-package us.flexion.sampleapp.units;
+package us.encom.sampleapp.units;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,18 +9,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import us.flexion.sampleapp.UnitsController;
-import us.flexion.sampleapp.model.Problem;
-import us.flexion.sampleapp.units.temperature.Celsius;
-import us.flexion.sampleapp.units.temperature.Fahrenheit;
-import us.flexion.sampleapp.units.temperature.Kelvin;
-import us.flexion.sampleapp.units.temperature.Rankine;
-import us.flexion.sampleapp.units.volume.CubicFoot;
-import us.flexion.sampleapp.units.volume.CubicInch;
-import us.flexion.sampleapp.units.volume.Cup;
-import us.flexion.sampleapp.units.volume.Gallon;
-import us.flexion.sampleapp.units.volume.Liter;
-import us.flexion.sampleapp.units.volume.Tablespoon;
+import us.encom.sampleapp.UnitsController;
+import us.encom.sampleapp.model.Problem;
+import us.encom.sampleapp.units.temperature.Celsius;
+import us.encom.sampleapp.units.temperature.Fahrenheit;
+import us.encom.sampleapp.units.temperature.Kelvin;
+import us.encom.sampleapp.units.temperature.Rankine;
+import us.encom.sampleapp.units.volume.CubicFoot;
+import us.encom.sampleapp.units.volume.CubicInch;
+import us.encom.sampleapp.units.volume.Cup;
+import us.encom.sampleapp.units.volume.Gallon;
+import us.encom.sampleapp.units.volume.Liter;
+import us.encom.sampleapp.units.volume.Tablespoon;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

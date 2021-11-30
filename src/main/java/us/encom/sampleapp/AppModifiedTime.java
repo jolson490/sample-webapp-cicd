@@ -1,4 +1,4 @@
-package us.flexion.sampleapp;
+package us.encom.sampleapp;
 
 import java.io.File;
 import java.io.PrintWriter;

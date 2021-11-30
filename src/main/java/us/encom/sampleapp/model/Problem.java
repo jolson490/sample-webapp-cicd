@@ -1,4 +1,4 @@
-package us.flexion.sampleapp.model;
+package us.encom.sampleapp.model;
 
 import java.util.HashMap;
 import java.util.Map;

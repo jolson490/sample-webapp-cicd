@@ -10,7 +10,7 @@
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>us.flexion</groupId>
+    <groupId>us.encom</groupId>
     <artifactId>sampleapp-jolson490</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Sample Java webapp with CI/CD to AWS - by Joshua Olson</name>
@@ -18,8 +18,8 @@
     <packaging>war</packaging>
     <url>http://jolson490-sampleapp.us-east-2.elasticbeanstalk.com</url>
     <organization>
-        <name>Flexion Inc.</name>
-        <url>https://www.flexion.us/</url>
+        <name>ENCOM</name>
+        <url>http://encom.us/</url>
     </organization>
 
     <licenses>
@@ -33,7 +33,7 @@
         <!-- The newest Java version that AWS Elastic Beanstalk supports. -->
         <java.version>1.8</java.version>
         <!-- There's only "public static void main" method in this repo/app, but still specify the main class just to be explicit. -->
-        <start-class>us.flexion.sampleapp.ConvertUnitsApplication</start-class>
+        <start-class>us.encom.sampleapp.ConvertUnitsApplication</start-class>
     </properties>
 
     <!-- For a production app we want to pin down specific versions of dependencies, but in this file we don't need to specify the '<version>' of each '<dependency>' from 'org.springframework.boot', 
