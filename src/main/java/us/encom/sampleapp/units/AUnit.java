@@ -1,4 +1,4 @@
-package us.flexion.convertunits.units;
+package us.flexion.sampleapp.units;
 
 /**
  * Abstract class for a unit of measure.

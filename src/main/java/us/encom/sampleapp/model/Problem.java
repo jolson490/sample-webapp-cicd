@@ -1,4 +1,4 @@
-package us.flexion.convertunits.model;
+package us.flexion.sampleapp.model;
 
 import java.util.HashMap;
 import java.util.Map;

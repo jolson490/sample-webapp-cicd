@@ -8,8 +8,8 @@ phases:
     commands:
       - echo Build completed on `date`
       - mvn package
-      - mv target/convert-units-jolson490-0.0.1-SNAPSHOT.war convert-units-jolson490-0.0.1-SNAPSHOT.war
+      - mv target/sampleapp-jolson490-0.0.1-SNAPSHOT.war sampleapp-jolson490-0.0.1-SNAPSHOT.war
 artifacts:
   files:
     - '**/*'
-  base-directory: 'target/convert-units-jolson490-0.0.1-SNAPSHOT'
+  base-directory: 'target/sampleapp-jolson490-0.0.1-SNAPSHOT'

@@ -1,4 +1,4 @@
-package us.flexion.convertunits.units;
+package us.flexion.sampleapp.units;
 
 /**
  * An interface for a lambda. (A lambda expresses an instance of a functional interface, which has a single abstract method.)

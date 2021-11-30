@@ -11,12 +11,12 @@
     </parent>
 
     <groupId>us.flexion</groupId>
-    <artifactId>convert-units-jolson490</artifactId>
+    <artifactId>sampleapp-jolson490</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Convert Units - Flexion coding challenge submission by Joshua Olson</name>
+    <name>Sample Java webapp with CI/CD to AWS - by Joshua Olson</name>
     <description>Checks provided answers for converted values for temperature or volume</description>
     <packaging>war</packaging>
-    <url>http://convertunits.us-east-2.elasticbeanstalk.com</url>
+    <url>http://jolson490-sampleapp.us-east-2.elasticbeanstalk.com</url>
     <organization>
         <name>Flexion Inc.</name>
         <url>https://www.flexion.us/</url>
@@ -33,7 +33,7 @@
         <!-- The newest Java version that AWS Elastic Beanstalk supports. -->
         <java.version>1.8</java.version>
         <!-- There's only "public static void main" method in this repo/app, but still specify the main class just to be explicit. -->
-        <start-class>us.flexion.convertunits.ConvertUnitsApplication</start-class>
+        <start-class>us.flexion.sampleapp.ConvertUnitsApplication</start-class>
     </properties>
 
     <!-- For a production app we want to pin down specific versions of dependencies, but in this file we don't need to specify the '<version>' of each '<dependency>' from 'org.springframework.boot', 

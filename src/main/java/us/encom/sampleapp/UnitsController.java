@@ -1,4 +1,4 @@
-package us.flexion.convertunits;
+package us.flexion.sampleapp;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -15,26 +15,26 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import us.flexion.convertunits.model.Problem;
-import us.flexion.convertunits.model.Problem.UnitTypes;
-import us.flexion.convertunits.units.AUnit;
-import us.flexion.convertunits.units.Measurement;
-import us.flexion.convertunits.units.temperature.Celsius;
-import us.flexion.convertunits.units.temperature.Fahrenheit;
-import us.flexion.convertunits.units.temperature.Kelvin;
-import us.flexion.convertunits.units.temperature.Rankine;
-import us.flexion.convertunits.units.volume.CubicFoot;
-import us.flexion.convertunits.units.volume.CubicInch;
-import us.flexion.convertunits.units.volume.Cup;
-import us.flexion.convertunits.units.volume.Gallon;
-import us.flexion.convertunits.units.volume.Liter;
-import us.flexion.convertunits.units.volume.Tablespoon;
+import us.flexion.sampleapp.model.Problem;
+import us.flexion.sampleapp.model.Problem.UnitTypes;
+import us.flexion.sampleapp.units.AUnit;
+import us.flexion.sampleapp.units.Measurement;
+import us.flexion.sampleapp.units.temperature.Celsius;
+import us.flexion.sampleapp.units.temperature.Fahrenheit;
+import us.flexion.sampleapp.units.temperature.Kelvin;
+import us.flexion.sampleapp.units.temperature.Rankine;
+import us.flexion.sampleapp.units.volume.CubicFoot;
+import us.flexion.sampleapp.units.volume.CubicInch;
+import us.flexion.sampleapp.units.volume.Cup;
+import us.flexion.sampleapp.units.volume.Gallon;
+import us.flexion.sampleapp.units.volume.Liter;
+import us.flexion.sampleapp.units.volume.Tablespoon;
 
 @Controller
 public class UnitsController {
   private static final Logger logger = LogManager.getLogger(UnitsController.class);
 
-  // curl -X GET http://localhost:8080/convertunits/
+  // curl -X GET http://localhost:8080/sampleapp/
   @RequestMapping("/")
   public String home(Model model) {
     logger.trace("in home()");
@@ -74,7 +74,7 @@ public class UnitsController {
     model.addAttribute("listUnitTypes", listUnitTypes);
   }
 
-  // curl -X GET http://localhost:8080/convertunits/checkAnswer
+  // curl -X GET http://localhost:8080/sampleapp/checkAnswer
   @RequestMapping(value = "/checkAnswer", method = RequestMethod.GET)
   public String checkResponse(Model model) {
     logger.trace("in checkResponse()");

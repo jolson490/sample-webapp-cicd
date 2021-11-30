@@ -1,15 +1,15 @@
-package us.flexion.convertunits.units.volume;
+package us.flexion.sampleapp.units.volume;
 
-import us.flexion.convertunits.units.AUnit;
-import us.flexion.convertunits.units.IBijection;
+import us.flexion.sampleapp.units.AUnit;
+import us.flexion.sampleapp.units.IBijection;
 
-public class CubicFoot extends AUnit {
-  public CubicFoot() {
-    super("CUFT");
+public class CubicInch extends AUnit {
+  public CubicInch() {
+    super("CI");
   }
 
   /**
-   * Conversion function from CubicFoot to base.
+   * Conversion function from CubicInch to base.
    */
   private final IBijection<Double, Double> _func = new IBijection<Double, Double>() {
     /**
@@ -26,13 +26,13 @@ public class CubicFoot extends AUnit {
      *
      * @return the value in the "base" scale
      */
-    public Double apply(Double valueCubicFoot) {
-      return valueCubicFoot * 119.688309;
+    public Double apply(Double valueCubicInch) {
+      return valueCubicInch * 0.069264;
     }
   };
 
   /**
-   * Conversion function from base to CubicFoot.
+   * Conversion function from base to CubicInch.
    */
   private final IBijection<Double, Double> _inverse = new IBijection<Double, Double>() {
     /**
@@ -47,10 +47,10 @@ public class CubicFoot extends AUnit {
     /**
      * Apply the lambda.
      * 
-     * @return the value in CubicFoot
+     * @return the value in CubicInch
      */
     public Double apply(Double valueBase) {
-      return valueBase * 0.008355;
+      return valueBase * 14.4375;
     }
   };
 
@@ -60,7 +60,7 @@ public class CubicFoot extends AUnit {
    * @return conversion function to "base" scale.
    */
   protected IBijection<Double, Double> getConversionFunction() {
-    // Cup is the "base" scale, so the conversion function is the function from CubicFoot to Cup, and the inverse of the conversion function is the function from Cup to CubicFoot.
+    // Cup is the "base" scale, so the conversion function is the function from CubicInch to Cup, and the inverse of the conversion function is the function from Cup to CubicInch.
     return _func;
   }
 } // class

@@ -4,7 +4,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Convert Units - coding challenge submission by Joshua Olson</title>
+<title>Sample Java webapp with CI/CD to AWS, by Joshua Olson</title>
 <link rel="icon" type="image/x-icon" href="assets/static/favicon.ico" />
 </head>
 
@@ -15,7 +15,7 @@
     <br>
     <br>
 
-    <i>For more info, see the <a target="_blank" href="https://github.com/jolson490/convert-units">GitHub repository</a>.
+    <i>For more info, see the <a target="_blank" href="https://github.com/jolson490/sample-webapp-cicd">GitHub repository</a>.
     </i>
 </body>
 </html>

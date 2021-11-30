@@ -1,15 +1,15 @@
-package us.flexion.convertunits.units.volume;
+package us.flexion.sampleapp.units.temperature;
 
-import us.flexion.convertunits.units.AUnit;
-import us.flexion.convertunits.units.IBijection;
+import us.flexion.sampleapp.units.AUnit;
+import us.flexion.sampleapp.units.IBijection;
 
-public class Tablespoon extends AUnit {
-  public Tablespoon() {
-    super("Tbsp.");
+public class Kelvin extends AUnit {
+  public Kelvin() {
+    super("K");
   }
 
   /**
-   * Conversion function from Tablespoon to base.
+   * Conversion function from Kelvin to base.
    */
   private final IBijection<Double, Double> _func = new IBijection<Double, Double>() {
     /**
@@ -26,13 +26,13 @@ public class Tablespoon extends AUnit {
      *
      * @return the value in the "base" scale
      */
-    public Double apply(Double valueTablespoon) {
-      return valueTablespoon / 16;
+    public Double apply(Double valueKelvin) {
+      return valueKelvin - 273.15;
     }
   };
 
   /**
-   * Conversion function from base to Tablespoon.
+   * Conversion function from base to Kelvin.
    */
   private final IBijection<Double, Double> _inverse = new IBijection<Double, Double>() {
     /**
@@ -47,21 +47,21 @@ public class Tablespoon extends AUnit {
     /**
      * Apply the lambda.
      * 
-     * @return the value in Tablespoon
+     * @return the value in Kelvins
      */
     public Double apply(Double valueBase) {
-      return valueBase * 16; // https://www.inchcalculator.com/convert/cup-to-tablespoon/
+      return valueBase + 273.15;
     }
   };
 
   /**
-   * Returns a function that converts a value in this volume scale to a value in the "base" volume scale.
+   * Returns a function that converts a value in this temperature scale to a value in the "base" temperature scale.
    * 
    * @return conversion function to "base" scale
    */
   protected IBijection<Double, Double> getConversionFunction() {
-    // Cup is the "base" scale, so the conversion function is the function from Tablespoon to Cup, and the inverse of the conversion function is the function from Cup to
-    // Tablespoon.
+    // Celsius is the "base" scale, so the conversion function is the function from Kelvin to Celsius, and the inverse of the conversion function is the function from Celsius to
+    // Kelvin.
     return _func;
   }
 } // class

@@ -1,4 +1,4 @@
-# Convert Units
+# Sample Java webapp with CI/CD to AWS
 
 ## Summary
 
@@ -6,7 +6,7 @@ This is a (relatively simple) Java EE web application, built with the Spring pla
 
 ## Deployed in AWS
 
-There's an instance of this application running at: [http://convertunits.us-east-2.elasticbeanstalk.com/](http://convertunits.us-east-2.elasticbeanstalk.com/) (please feel free to play around with it and check it out!)
+There's an instance of this application running at: [http://jolson490-sampleapp.us-east-2.elasticbeanstalk.com/](http://jolson490-sampleapp.us-east-2.elasticbeanstalk.com/) (please feel free to play around with it and check it out!)
 
 ## CI/CD
 
@@ -25,9 +25,9 @@ Hey Flexion engineers, now it's my turn to give you some work! I challenge you t
 
 Here's the list (in priority order - highest priority items listed first) of development tasks I would do next (if I were getting paid to work on this app <img src="https://www.netclipart.com/pp/m/176-1768758_clipart-transparent-download-wink-emoticon-smiley-face-tongue.png" alt="winking smiley face" height="25" width="25"> ) to improve this solution to the code challenge. Assuming this is an app that is used by clients and has an SLA such that we/Flexion making $ is dependent on the app staying up ~99% of the time:
  * Here's the MVP to be done prior to this app being made publicly available in a production environment:
-    * Add more [automated tests](src/test/java/us/flexion/convertunits/units/) to cover the rest of the app besides the `determineOutput` method in `UnitsController`.
-    * Create an error page - so that trying to access a page that doesn't exist (e.g. [http://convertunits.us-east-2.elasticbeanstalk.com/xyz](http://convertunits.us-east-2.elasticbeanstalk.com/xyz)) doesn't yield the generic "Whitelabel Error Page".
-    * Create both a non-production/dev and production instance of this app. Change the production URL from `http://convertunits.us-east-2.elasticbeanstalk.com/convertunits/` to `https://convertunits.flexion.us`. Setup dev as `https://dev.convertunits.flexion.us`. Continue to have the pipeline for dev. Determine whether there should be a manual approval needed before a pipeline deploys a new commit/release to production. For production the last updated/deployed date/time should be a hidden html field - not displayed on the rendered html. And setup monitoring to notify the developer team supporting this app at least 1 month in advance of when the SSL certificate is going to expire.
+    * Add more [automated tests](src/test/java/us/flexion/sampleapp/units/) to cover the rest of the app besides the `determineOutput` method in `UnitsController`.
+    * Create an error page - so that trying to access a page that doesn't exist (e.g. [http://jolson490-sampleapp.us-east-2.elasticbeanstalk.com/xyz](http://jolson490-sampleapp.us-east-2.elasticbeanstalk.com/xyz)) doesn't yield the generic "Whitelabel Error Page".
+    * Create both a non-production/dev and production instance of this app. Change the production URL from `http://jolson490-sampleapp.us-east-2.elasticbeanstalk.com/sampleapp/` to `https://sampleapp.flexion.us`. Setup dev as `https://dev.sampleapp.flexion.us`. Continue to have the pipeline for dev. Determine whether there should be a manual approval needed before a pipeline deploys a new commit/release to production. For production the last updated/deployed date/time should be a hidden html field - not displayed on the rendered html. And setup monitoring to notify the developer team supporting this app at least 1 month in advance of when the SSL certificate is going to expire.
     * Setup New Relic to monitor the app - such that if the app is down then send a notification to the team: via Slack for dev or production, and via PagerDuty for production.
     * It might be ideal to change the primary appender in [log4j2-prod.xml](src/main/resources/log4j2-prod.xml) to write the logs to an external location, such as Splunk, if it ends up being inconvenient/insufficient to access the logs via AWS Elastic Beanstalk.
     * Given the anticipated usage of the app, consider whether we need to do any of the following: make the app more [secure](https://spring.io/guides/gs/securing-web/) (e.g. add authentication), specify any JVM arguments (e.g. for heap size), and/or setup the Auto Scaling group in the Elastic Beanstalk environment to do load balancing (to handle increased usage of the app).
@@ -57,9 +57,9 @@ In addition to Eclipse, you need the following installed on your machine:
 * [Spring Tools 4](https://marketplace.eclipse.org/content/spring-tools-4-spring-boot-aka-spring-tool-suite-4)
 
 Setup in Eclipse:
-* Do `git clone https://github.com/jolson490/convert-units.git` in your Eclipse workspace folder.
-* Import, Maven, Existing Maven Projects, then choose the `convert-units` folder you just obtained via `git clone`.
-* Right-click this `convert-units` project in Eclipse, Run As, Maven install.
+* Do `git clone https://github.com/jolson490/sample-webapp-cicd.git` in your Eclipse workspace folder.
+* Import, Maven, Existing Maven Projects, then choose the `sample-webapp-cicd` folder you just obtained via `git clone`.
+* Right-click this `sample-webapp-cicd` project in Eclipse, Run As, Maven install.
 * If needed to resolve any errors in Eclipse: right-click the project, Maven, Update Project.
 
-To start the application in Eclipse: click the project, `Alt+Shift+X,B` to Run Spring Boot App. Then you can access the application via your browser at: [http://localhost:8080/convertunits/](http://localhost:8080/convertunits/)
+To start the application in Eclipse: click the project, `Alt+Shift+X,B` to Run Spring Boot App. Then you can access the application via your browser at: [http://localhost:8080/sampleapp/](http://localhost:8080/sampleapp/)

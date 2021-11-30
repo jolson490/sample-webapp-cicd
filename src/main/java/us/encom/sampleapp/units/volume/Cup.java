@@ -1,7 +1,7 @@
-package us.flexion.convertunits.units.volume;
+package us.flexion.sampleapp.units.volume;
 
-import us.flexion.convertunits.units.AUnit;
-import us.flexion.convertunits.units.IBijection;
+import us.flexion.sampleapp.units.AUnit;
+import us.flexion.sampleapp.units.IBijection;
 
 public class Cup extends AUnit {
   public Cup() {

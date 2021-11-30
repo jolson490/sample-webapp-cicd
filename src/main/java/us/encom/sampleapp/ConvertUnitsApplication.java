@@ -1,4 +1,4 @@
-package us.flexion.convertunits;
+package us.flexion.sampleapp;
 
 import javax.annotation.PostConstruct;
 
@@ -37,7 +37,7 @@ public class ConvertUnitsApplication extends SpringBootServletInitializer {
 class GreetingController {
   private static final Logger logger = LogManager.getLogger(GreetingController.class);
 
-  // e.g. http://localhost:8080/convertunits/hello/JoshO
+  // e.g. http://localhost:8080/sampleapp/hello/JoshO
   @RequestMapping("/hello/{name}")
   public String hello(@PathVariable String name) {
     logger.trace("in hello(): name={}", name);

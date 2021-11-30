@@ -1,4 +1,4 @@
-package us.flexion.convertunits.units;
+package us.flexion.sampleapp.units;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,18 +9,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import us.flexion.convertunits.UnitsController;
-import us.flexion.convertunits.model.Problem;
-import us.flexion.convertunits.units.temperature.Celsius;
-import us.flexion.convertunits.units.temperature.Fahrenheit;
-import us.flexion.convertunits.units.temperature.Kelvin;
-import us.flexion.convertunits.units.temperature.Rankine;
-import us.flexion.convertunits.units.volume.CubicFoot;
-import us.flexion.convertunits.units.volume.CubicInch;
-import us.flexion.convertunits.units.volume.Cup;
-import us.flexion.convertunits.units.volume.Gallon;
-import us.flexion.convertunits.units.volume.Liter;
-import us.flexion.convertunits.units.volume.Tablespoon;
+import us.flexion.sampleapp.UnitsController;
+import us.flexion.sampleapp.model.Problem;
+import us.flexion.sampleapp.units.temperature.Celsius;
+import us.flexion.sampleapp.units.temperature.Fahrenheit;
+import us.flexion.sampleapp.units.temperature.Kelvin;
+import us.flexion.sampleapp.units.temperature.Rankine;
+import us.flexion.sampleapp.units.volume.CubicFoot;
+import us.flexion.sampleapp.units.volume.CubicInch;
+import us.flexion.sampleapp.units.volume.Cup;
+import us.flexion.sampleapp.units.volume.Gallon;
+import us.flexion.sampleapp.units.volume.Liter;
+import us.flexion.sampleapp.units.volume.Tablespoon;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

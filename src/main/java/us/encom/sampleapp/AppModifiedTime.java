@@ -1,4 +1,4 @@
-package us.flexion.convertunits;
+package us.flexion.sampleapp;
 
 import java.io.File;
 import java.io.PrintWriter;

@@ -1,7 +1,7 @@
-package us.flexion.convertunits.units.temperature;
+package us.flexion.sampleapp.units.temperature;
 
-import us.flexion.convertunits.units.AUnit;
-import us.flexion.convertunits.units.IBijection;
+import us.flexion.sampleapp.units.AUnit;
+import us.flexion.sampleapp.units.IBijection;
 
 public class Celsius extends AUnit {
   public Celsius() {

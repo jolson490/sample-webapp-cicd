@@ -1,15 +1,15 @@
-package us.flexion.convertunits.units.volume;
+package us.flexion.sampleapp.units.temperature;
 
-import us.flexion.convertunits.units.AUnit;
-import us.flexion.convertunits.units.IBijection;
+import us.flexion.sampleapp.units.AUnit;
+import us.flexion.sampleapp.units.IBijection;
 
-public class Gallon extends AUnit {
-  public Gallon() {
-    super("G.");
+public class Fahrenheit extends AUnit {
+  public Fahrenheit() {
+    super("F");
   }
 
   /**
-   * Conversion function from Gallon to base.
+   * Conversion function from Fahrenheit to base.
    */
   private final IBijection<Double, Double> _func = new IBijection<Double, Double>() {
     /**
@@ -26,13 +26,13 @@ public class Gallon extends AUnit {
      *
      * @return the value in the "base" scale
      */
-    public Double apply(Double valueGallon) {
-      return valueGallon * 16;
+    public Double apply(Double valueFahrenheit) {
+      return (valueFahrenheit - 32.0) / 9.0 * 5.0;
     }
   };
 
   /**
-   * Conversion function from base to Gallon.
+   * Conversion function from base to Fahrenheit.
    */
   private final IBijection<Double, Double> _inverse = new IBijection<Double, Double>() {
     /**
@@ -47,20 +47,21 @@ public class Gallon extends AUnit {
     /**
      * Apply the lambda.
      * 
-     * @return the value in Gallon
+     * @return the value in Fahrenheit
      */
     public Double apply(Double valueBase) {
-      return valueBase / 16;
+      return valueBase / 5.0 * 9.0 + 32.0;
     }
   };
 
   /**
-   * Returns a function that converts a value in this volume scale to a value in the "base" volume scale.
+   * Returns a function that converts a value in this temperature scale to a value in the "base" temperature scale.
    * 
-   * @return conversion function to "base" scale.
+   * @return conversion function to "base" scale
    */
   protected IBijection<Double, Double> getConversionFunction() {
-    // Cup is the "base" scale, so the conversion function is the function from Gallon to Cup, and the inverse of the conversion function is the function from Cup to Gallon.
+    // Celsius is the "base" scale, so the conversion function is the function from Fahrenheit to Celsius, and the inverse of the conversion function is the function from Celsius
+    // to Fahrenheit.
     return _func;
   }
 } // class
