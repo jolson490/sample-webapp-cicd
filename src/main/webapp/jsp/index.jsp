@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <a href="${pageContext.request.contextPath}/checkAnswer">Click here</a> to check provided answers for converted values for temperature or volume.
+    <a href="${pageContext.request.contextPath}/checkAnswer">Go here</a> to check provided answers for converted values for temperature or volume.
     <br>
     <br> This application was last updated/deployed at: ${lastUpdated}
     <br>
