@@ -15,7 +15,7 @@
     <br>
     <br>
 
-    <i>For more info, see the <a target="_blank" href="https://github.com/jolson490/sample-webapp-cicd">GitHub repository</a>.
+    <i>For more info, see the <a target="_blank" href="https://github.com/jolson490/sample-webapp-cicd">GitHub repo</a>.
     </i>
 </body>
 </html>
